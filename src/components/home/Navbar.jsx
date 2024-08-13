@@ -9,7 +9,7 @@ function Navbar() {
   const Links = [
     { name: "Home", link: "/" },
     { name: "Cart", link: "/cart" },
-    // { name: "Testimonials", link: "#testimonials" },
+    { name: "Contact Us", link: "/contact" },
     // { name: "Pricing", link: "#pricing" },
   ];
 

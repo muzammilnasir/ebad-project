@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 const SpecialCase = () => {
     const cart = useSelector((state) => state.cartSliceOne.cart);
   return (
-    <div className="fixed top-[50%] -translate-y-[50%] right-1 z-20 hidden md:flex flex-col gap-2">
+    <div className="fixed top-[50%] -translate-y-[50%] right-1 z-20 md:flex flex-col gap-2">
       <Link to="/cart">
         <div className="cartShadow w-16 h-[70px] rounded-md flex flex-col bg-white gap-1 text-blue-900 justify-center items-center shadow-2xl overflow-x-hidden group cursor-pointer relative">
           <div className="flex justify-center items-center">

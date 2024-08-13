@@ -5,6 +5,7 @@ import Navbar from "./components/home/Navbar";
 import Footer from "./components/home/Footer";
 import SpecialCase from "./components/specialcase/SpecialCase";
 import ScrollToTop from "./components/specialcase/ScrollToTop";
+import Contact from "./pages/Contact";
 
 const Layout = () => {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index path="/" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/contact" element={<Contact />} />
         </Route>
       </Routes>
     </Router>

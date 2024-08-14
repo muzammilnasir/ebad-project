@@ -1,35 +1,22 @@
-import { BrowserRouter as Router, Routes, Route, Outlet } from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import Cart from "./pages/Cart";
-import Navbar from "./components/home/Navbar";
-import Footer from "./components/home/Footer";
-import SpecialCase from "./components/specialcase/SpecialCase";
-import ScrollToTop from "./components/specialcase/ScrollToTop";
 import Contact from "./pages/Contact";
+import Layout from "./components/layout/Layout";
 
-const Layout = () => {
-  return (
-    <div>
-      <ScrollToTop />
-      <Navbar />
-      <SpecialCase />
-      <Outlet />
-      <Footer />
-    </div>
-  );
-};
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path='/' element={<Layout />}>
+      <Route path="" element={<Home />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/contact" element={<Contact />} />
+    </Route>
+  )
+)
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index path="/" element={<Home />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/contact" element={<Contact />} />
-        </Route>
-      </Routes>
-    </Router>
+    <RouterProvider router={router} />
   );
 }
 

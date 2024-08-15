@@ -3,6 +3,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
+import { Link } from 'react-router-dom';
 
 
 function Banner() {
@@ -73,7 +74,7 @@ function Banner() {
             <p className='font-semibold text-2xl'>{data.titleOne}</p>
             <h3 className='font-bold text-[2.5rem] sm:text-5xl text-blue-500'>{data.titleTwo}</h3>
             <p className='text-lg'>{data.description}</p>
-            <a href="" className='sm:text-[20px] block w-fit rounded-md bg-blue-500 px-6 py-[10px] text-white duration-100 hover:bg-blue-600'>{data.btnText}</a>
+            <Link to="contact" className='sm:text-[20px] block w-fit rounded-md bg-blue-500 px-6 py-[10px] text-white duration-100 hover:bg-blue-600'>{data.btnText}</Link>
           </div>
           <div className='md:h-[600px]'>
             <img className='h-full w-full rounded-lg' src={data.image} alt="" />

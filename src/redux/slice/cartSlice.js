@@ -3,6 +3,7 @@ import axios from "axios";
 
 export const fetchApi = createAsyncThunk("cart/fetchApi", async () => {
   const response = await axios.get("https://fakestoreapi.com/products");
+  console.log(response.data)
   return response.data;
 });
 
@@ -15,6 +16,10 @@ const cartSlice = createSlice({
       ? JSON.parse(localStorage.getItem("cart"))
       : [],
     isError: false,
+    selectedProduct: localStorage.getItem("selectedProduct")
+    ? JSON.parse(localStorage.getItem("selectedProduct"))
+    : null,
+    favorites: [],
   },
   reducers: {
     add(state, action) {
@@ -32,6 +37,18 @@ const cartSlice = createSlice({
     remove(state, action) {
       state.cart = state.cart.filter((item) => item.id !== action.payload.id);
       localStorage.setItem("cart", JSON.stringify(state.cart));
+    },
+    selectProduct(state, action) {
+      state.selectedProduct = action.payload;
+      localStorage.setItem("selectedProduct", JSON.stringify(state.selectedProduct));
+    },
+    toggleFavorite: (state, action) => {
+      const productId = action.payload;
+      if (state.favorites.includes(productId)) {
+        state.favorites = state.favorites.filter(id => id !== productId);
+      } else {
+        state.favorites.push(productId);
+      }
     },
     increaseQuantity(state, action) {
       const itemIndex = state.cart.findIndex(
@@ -72,5 +89,5 @@ const cartSlice = createSlice({
   },
 });
 
-export const { add, remove, increaseQuantity, decreaseQuantity, resetCart } = cartSlice.actions;
+export const { add, remove, selectProduct, toggleFavorite, increaseQuantity, decreaseQuantity, resetCart } = cartSlice.actions;
 export default cartSlice.reducer;

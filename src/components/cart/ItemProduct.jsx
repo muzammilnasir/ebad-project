@@ -1,7 +1,8 @@
 import React from "react";
-import { ImCross } from "react-icons/im";
+import { ImCross, ImPlus } from "react-icons/im";
 import { useSelector, useDispatch } from "react-redux";
 import { remove, increaseQuantity, decreaseQuantity  } from "../../redux/slice/cartSlice";
+import { FaPlus, FaMinus, FaCross } from "react-icons/fa6";
 
 function ItemProduct() {
   const cart = useSelector((state) => state.cartSliceOne.cart);
@@ -37,19 +38,15 @@ function ItemProduct() {
                 $ {data.price}
               </div>
               <div className="md:w-1/3 flex items-center gap-6 text-lg">
-                <span
-                  className="w-6 h-6 bg-gray-100 text-2xl flex items-center justify-center hover:bg-gray-300 cursor-pointer duration-300 border-[1px] border-gray-300 hover:border-gray-300"
+              <FaMinus
+                  className="w-6 h-6 bg-gray-100 p-1 flex items-center justify-center hover:bg-gray-300 cursor-pointer duration-300 border-[1px] border-gray-300 hover:border-gray-300"
                   onClick={() => handleDecreaseQuantity(data)}
-                >
-                  -
-                </span>
-                <p>{data.cartQuantity}</p>
-                <span
-                  className="w-6 h-6 bg-gray-100 text-2xl flex items-center justify-center hover:bg-gray-300 cursor-pointer duration-300 border-[1px] border-gray-300 hover:border-gray-300"
+                />
+                <p className="font-bold text-[17px]">{data.cartQuantity}</p>
+                <FaPlus
+                  className="w-6 h-6 bg-gray-100 p-1 flex items-center justify-center hover:bg-gray-300 cursor-pointer duration-300 border-[1px] border-gray-300 hover:border-gray-300"
                   onClick={() => handleIncreaseQuantity(data)}
-                >
-                  +
-                </span>
+                  />
               </div>
               <div className="w-1/3 flex items-center font-semibold text-lg">
               <p>$ {data.cartQuantity * data.price}</p>

@@ -8,7 +8,7 @@ const SpecialCase = () => {
   return (
     <div className="fixed top-[50%] -translate-y-[50%] right-1 z-20 md:flex flex-col gap-2">
       <Link to="/cart">
-        <div className="cartShadow w-16 h-[70px] rounded-md flex flex-col bg-white gap-1 text-blue-900 justify-center items-center shadow-2xl overflow-x-hidden group cursor-pointer relative">
+        <div className={`${cart.length > 0 ? "block" : "hidden"} cartShadow w-16 h-[70px] rounded-md flex flex-col bg-white gap-1 text-blue-900 justify-center items-center shadow-2xl overflow-x-hidden group cursor-pointer relative`}>
           <div className="flex justify-center items-center">
             <RiShoppingCart2Fill className="text-2xl -translate-x-12 group-hover:translate-x-3 transition-transform duration-200" />
 

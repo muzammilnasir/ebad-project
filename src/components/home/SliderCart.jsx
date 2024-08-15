@@ -14,13 +14,11 @@ function SliderCart() {
   );
 
   useEffect(() => {
-    console.log("Dispatching fetchApi");
     dispatch(fetchApi());
   }, [dispatch]);
 
   const addToCart = (product) => {
     dispatch(add(product));
-    console.log("Added product", product);
   };
 
   const NextArrow = ({ onClick }) => {
@@ -101,13 +99,13 @@ function SliderCart() {
             {products.map((product) => (
               <article
                 key={product.id}
-                className="w-[280px] rounded-xl bg-gray-900 p-3 shadow-lg hover:shadow-xl duration-300 "
+                className="w-[280px] rounded-xl bg-gray-900 p-3 duration-300 "
               >
-                <div className="relative flex items-end overflow-hidden rounded-xl">
+                <div className="relative m-auto overflow-hidden rounded-xl h-[130px] w-[130px] mb-[20px]">
                   <img
                     src={product.image}
                     alt={product.title}
-                    className="w-full h-[200px] object-contain"
+                    className="w-full h-full object-contain"
                   />
                 </div>
 

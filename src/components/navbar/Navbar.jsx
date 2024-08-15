@@ -7,15 +7,16 @@ import { NavLink, Link } from "react-router-dom";
 function Navbar() {
   const [open, setOpen] = useState(false);
   const Links = [
-    { name: "Home", link: "/" },
-    { name: "Cart", link: "/cart" },
-    { name: "Contact Us", link: "/contact" },
-    // { name: "Pricing", link: "#pricing" },
+    { name: "Home", link: "" },
+    { name: "Favorite", link: "favorite" },
+    { name: "Details", link: "details" },
+    { name: "Cart", link: "cart" },
+    { name: "Contact Us", link: "contact" },
   ];
 
   return (
     <div className="mb-[72px]">
-      <nav className="bg-gray-900 fixed w-full z-[999] top-0">
+      <nav className="bg-gray-900 fixed w-full z-[999] top-0 shadow-2xl">
         <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-5">
           <Link
             to='/'

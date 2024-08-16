@@ -7,6 +7,10 @@ export const fetchApi = createAsyncThunk("cart/fetchApi", async () => {
   return response.data;
 });
 
+const initialFavorites = localStorage.getItem("favorite")
+  ? JSON.parse(localStorage.getItem("favorite"))
+  : [];
+
 const cartSlice = createSlice({
   name: "cartSlice",
   initialState: {
@@ -19,7 +23,7 @@ const cartSlice = createSlice({
     selectedProduct: localStorage.getItem("selectedProduct")
     ? JSON.parse(localStorage.getItem("selectedProduct"))
     : null,
-    favorites: [],
+    favorites: initialFavorites,
   },
   reducers: {
     add(state, action) {
@@ -49,6 +53,7 @@ const cartSlice = createSlice({
       } else {
         state.favorites.push(productId);
       }
+      localStorage.setItem("favorite", JSON.stringify(state.favorites));
     },
     increaseQuantity(state, action) {
       const itemIndex = state.cart.findIndex(

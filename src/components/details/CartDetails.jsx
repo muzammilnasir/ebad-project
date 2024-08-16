@@ -155,6 +155,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { add, toggleFavorite } from "../../redux/slice/cartSlice";
 import { IoStar } from "react-icons/io5";
 import { IoIosStarHalf } from "react-icons/io";
+import { IoIosHeart } from "react-icons/io";
 
 function CartDetails() {
   const dispatch = useDispatch();
@@ -242,30 +243,14 @@ function CartDetails() {
               <div className="sm:gap-4 sm:items-center sm:flex">
                 <button
                   onClick={() => handleFavoriteToggle(data.id)}
-                  className={`flex items-center justify-center py-2.5 px-5 text-sm font-medium focus:outline-none rounded-lg border border-gray-200 dark:focus:ring-gray-700 dark:border-gray-600 ${
+                  className={`flex items-center gap-2 justify-center py-2.5 px-5 text-sm font-medium focus:outline-none rounded-lg border border-gray-200 dark:focus:ring-gray-700 dark:border-gray-600 ${
                     isFavorite
                       ? "bg-red-500 text-white hover:bg-red-600"
                       : "bg-white text-gray-900 hover:bg-gray-100"
                   }`}
                   role="button"
                 >
-                  <svg
-                    className="w-5 h-5 -ms-2 me-2"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"
-                    />
-                  </svg>
+                  <IoIosHeart size={20} />
                   {isFavorite ? "Remove from favorites" : "Add to favorites"}
                 </button>
 

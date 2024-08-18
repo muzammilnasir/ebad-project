@@ -2,12 +2,14 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { fetchApi, selectProduct } from "../../redux/slice/cartSlice";
+import { fetchApi, add, selectProduct, toggleFavorite } from "../../redux/slice/cartSlice";
 import Slider from "react-slick";
 import { GrFormNextLink, GrFormPreviousLink } from "react-icons/gr";
 import Heading from "./Heading";
 import { TbListDetails } from "react-icons/tb";
 import { useNavigate } from 'react-router-dom';
+import { IoIosHeart } from "react-icons/io";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 function SliderCart() {
   const dispatch = useDispatch();
@@ -15,10 +17,19 @@ function SliderCart() {
   const { isLoading, products, isError } = useSelector(
     (state) => state.cartSliceOne
   );
+  const favorites = useSelector((state) => state.cartSliceOne.favorites);
 
   useEffect(() => {
     dispatch(fetchApi());
   }, [dispatch]);
+
+  const addToCart = (product) => {
+    dispatch(add(product));
+  };
+
+  const handleFavoriteToggle = (id) => {
+    dispatch(toggleFavorite(id));
+  };
 
   const handleCardClick = (product) => {
     dispatch(selectProduct(product));
@@ -100,11 +111,34 @@ function SliderCart() {
           </h1>
         ) : (
           <Slider {...settings}>
-            {products.map((product) => (
-              <article
+            {products.map((product) => {
+              const isFavorite = favorites.includes(product.id);
+              return (
+                <article
                 key={product.id}
-                className="w-[280px] rounded-xl bg-gray-900 p-3 duration-300 "
+                className="relative w-[280px] rounded-xl bg-gray-900 p-3 duration-300 border-[1px]"
               >
+                <div className="absolute top-4 right-2 space-y-3 z-[999]">
+                    <div className="flex items-center justify-center rounded-full overflow-hidden duration-100">
+                      <button
+                        onClick={() => handleFavoriteToggle(product.id)}
+                        className={`flex items-center justify-center ${
+                          isFavorite ? "text-red-500" : "text-gray-400"
+                        }`}
+                        role="button"
+                      >
+                        <IoIosHeart size={25} />
+                      </button>
+                    </div>
+                    <div className="flex items-center justify-center rounded-full bg-blue-500 overflow-hidden h-8 w-8 text-white duration-100 hover:bg-blue-600">
+                      <button
+                        className="flex items-center justify-center h-8 w-8"
+                        onClick={() => handleCardClick(product)}
+                      >
+                        <TbListDetails />
+                      </button>
+                    </div>
+                  </div>
                 <div className="relative m-auto overflow-hidden rounded-xl h-[130px] w-[130px] mb-[20px]">
                   <img
                     src={product.image}
@@ -127,18 +161,19 @@ function SliderCart() {
                     </p>
 
                     <div className="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600">
-                      <button
-                      onClick={() => handleCardClick(product)}
-                        className="text-sm flex items-center gap-1"
-                      >
-                        <TbListDetails />
-                        More Details
-                      </button>
-                    </div>
+                        <button
+                          onClick={() => addToCart(product)}
+                          className="text-sm flex items-center gap-1"
+                        >
+                          <MdOutlineShoppingCart size={17} />
+                          Add To Cart
+                        </button>
+                      </div>
                   </div>
                 </div>
               </article>
-            ))}
+              )
+            })}
           </Slider>
         )}
       </div>

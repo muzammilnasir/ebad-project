@@ -4,6 +4,7 @@ import Footer from '../footer/Footer'
 import { Outlet } from 'react-router-dom'
 import ScrollToTop from '../specialcase/ScrollToTop'
 import ShoppingIcon from '../specialcase/ShoppingIcon'
+import DarkMode from '../specialcase/DarkMode'
 
 function Layout() {
   return (
@@ -11,6 +12,7 @@ function Layout() {
       <Navbar />
       <ScrollToTop />
       <ShoppingIcon />
+      <DarkMode />
       <Outlet />
       <Footer />
     </>

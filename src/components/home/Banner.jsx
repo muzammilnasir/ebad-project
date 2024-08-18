@@ -64,13 +64,13 @@ function Banner() {
 
   return (
     <>
-      <div className='w-[100%] h-[100%] bg-gray-900 pt-[60px] pb-[80px]'>
+      <div className='w-[100%] h-[100%] pt-[60px] pb-[80px]'>
         <div className='max-w-screen-xl m-auto'>
       <Slider {...settings}>
         {bannerData.map((data) => (
           <div key={data} >
         <div className='flex items-center flex-col gap-[50px] lg:gap-[20px] lg:flex-row justify-between w-full m-auto px-[20px]'>
-          <div className='text-white space-y-5 lg:max-w-lg'>
+          <div className='dark:text-white space-y-5 lg:max-w-lg'>
             <p className='font-semibold text-2xl'>{data.titleOne}</p>
             <h3 className='font-bold text-[2.5rem] sm:text-5xl text-blue-500'>{data.titleTwo}</h3>
             <p className='text-lg'>{data.description}</p>

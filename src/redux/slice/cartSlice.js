@@ -1,101 +1,3 @@
-// import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-// import axios from "axios";
-
-// export const fetchApi = createAsyncThunk("cart/fetchApi", async () => {
-//   const response = await axios.get("https://fakestoreapi.com/products");
-//   console.log(response.data)
-//   return response.data;
-// });
-
-// const initialFavorites = localStorage.getItem("favorite")
-//   ? JSON.parse(localStorage.getItem("favorite"))
-//   : [];
-
-// const cartSlice = createSlice({
-//   name: "cartSlice",
-//   initialState: {
-//     isLoading: false,
-//     products: [],
-//     cart: localStorage.getItem("cart")
-//       ? JSON.parse(localStorage.getItem("cart"))
-//       : [],
-//     isError: false,
-//     selectedProduct: localStorage.getItem("selectedProduct")
-//     ? JSON.parse(localStorage.getItem("selectedProduct"))
-//     : null,
-//     favorites: initialFavorites,
-//   },
-//   reducers: {
-//     add(state, action) {
-//       const itemIndex = state.cart.findIndex(
-//         (item) => item.id === action.payload.id
-//       );
-//       if (itemIndex >= 0) {
-//         state.cart[itemIndex].cartQuantity += 1;
-//       } else {
-//         const tempProduct = { ...action.payload, cartQuantity: 1 };
-//         state.cart.push(tempProduct);
-//       }
-//       localStorage.setItem("cart", JSON.stringify(state.cart));
-//     },
-//     remove(state, action) {
-//       state.cart = state.cart.filter((item) => item.id !== action.payload.id);
-//       localStorage.setItem("cart", JSON.stringify(state.cart));
-//     },
-//     selectProduct(state, action) {
-//       state.selectedProduct = action.payload;
-//       localStorage.setItem("selectedProduct", JSON.stringify(state.selectedProduct));
-//     },
-//     toggleFavorite: (state, action) => {
-//       const productId = action.payload;
-//       if (state.favorites.includes(productId)) {
-//         state.favorites = state.favorites.filter(id => id !== productId);
-//       } else {
-//         state.favorites.push(productId);
-//       }
-//       localStorage.setItem("favorite", JSON.stringify(state.favorites));
-//     },
-//     increaseQuantity(state, action) {
-//       const itemIndex = state.cart.findIndex(
-//         (item) => item.id === action.payload.id
-//       );
-//       if (itemIndex >= 0) {
-//         state.cart[itemIndex].cartQuantity += 1;
-//         localStorage.setItem("cart", JSON.stringify(state.cart));
-//       }
-//     },
-//     decreaseQuantity(state, action) {
-//       const itemIndex = state.cart.findIndex(
-//         (item) => item.id === action.payload.id
-//       );
-//       if (itemIndex >= 0 && state.cart[itemIndex].cartQuantity > 1) {
-//         state.cart[itemIndex].cartQuantity -= 1;
-//         localStorage.setItem("cart", JSON.stringify(state.cart));
-//       }
-//     },
-//     resetCart(state) {
-//       state.cart = [];
-//       localStorage.removeItem("cart");
-//     },
-//   },
-//   extraReducers: (builder) => {
-//     builder
-//       .addCase(fetchApi.pending, (state) => {
-//         state.isLoading = true;
-//       })
-//       .addCase(fetchApi.fulfilled, (state, action) => {
-//         state.isLoading = false;
-//         state.products = action.payload;
-//       })
-//       .addCase(fetchApi.rejected, (state) => {
-//         state.isLoading = false;
-//         state.isError = true;
-//       });
-//   },
-// });
-
-// export const { add, remove, selectProduct, toggleFavorite, increaseQuantity, decreaseQuantity, resetCart } = cartSlice.actions;
-// export default cartSlice.reducer;
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -103,7 +5,7 @@ import { toast } from "react-toastify";
 // Fetch products from API
 export const fetchApi = createAsyncThunk("cart/fetchApi", async () => {
   const response = await axios.get("https://fakestoreapi.com/products");
-  console.log(response.data);
+  // console.log(response.data);
   return response.data;
 });
 

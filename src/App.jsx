@@ -2,6 +2,7 @@ import React, { Suspense, lazy } from "react";
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import { ToastContainer } from 'react-toastify';
+import DarkMode from "./components/specialcase/DarkMode";
 
 const Home = lazy(() => import("./pages/Home"));
 const Cart = lazy(() => import("./pages/Cart"));
@@ -35,7 +36,8 @@ function App() {
       }>
         <RouterProvider router={router} />
       </Suspense>
-      <ToastContainer /> 
+      <ToastContainer />
+      <DarkMode /> 
     </>
   );
 }

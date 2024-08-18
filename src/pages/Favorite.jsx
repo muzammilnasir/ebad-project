@@ -2,6 +2,8 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { IoIosHeart } from "react-icons/io";
 import { toggleFavorite } from "../redux/slice/cartSlice";
+import EmptyCart from "../components/specialcase/EmptyCart";
+import Heading from "../components/home/Heading";
 
 function Favorite() {
   const dispatch = useDispatch();
@@ -15,11 +17,18 @@ function Favorite() {
     dispatch(toggleFavorite(id));
   };
 
+  const emptyData = {
+    heading: 'Your Favorites list is empty.',
+    description: "It seems like you haven't picked any favorites yet. Explore our products and add some to your favorites list.",
+    btnText: 'Add Favorites',
+  };
+  
+
   return (
-    <div>
-      <h1 className="text-center text-[28px] sm:text-[2.5rem] font-bold py-[30px]">Favorite Product</h1>
+    <div className="bg-white dark:bg-gray-900 py-[20px]">
+      <Heading heading="Favorite" />
       {favoriteProducts.length > 0 ? (
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 place-items-center gap-[20px] lg:gap-[30px] m-auto max-w-[1200px] pt-[20px] pb-[40px] px-[20px]">
+        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 place-items-center gap-[20px] lg:gap-[30px] m-auto max-w-[1200px] pt-[20px] pb-[80px] px-[20px]">
           {favoriteProducts.map((product) => (
             <div
               key={product.id}
@@ -58,9 +67,7 @@ function Favorite() {
           ))}
         </ul>
       ) : (
-        <h1 className="text-center text-[2rem] font-semibold w-full">
-          No favorite products yet. Add some to see them here!
-        </h1>
+        <EmptyCart emptyData={emptyData} />
       )}
     </div>
   );

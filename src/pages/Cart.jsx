@@ -3,7 +3,7 @@ import Product from '../components/cart/Product'
 
 function Cart() {
   return (
-    <div>
+    <div className='bg-white dark:bg-gray-900'>
       <Product />
     </div>
   )

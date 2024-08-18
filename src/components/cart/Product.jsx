@@ -5,6 +5,7 @@ import ItemProduct from "./ItemProduct";
 import { useDispatch, useSelector } from "react-redux";
 import { resetCart } from "../../redux/slice/cartSlice";
 import { emptyCart } from "../../assets";
+import EmptyCart from "../specialcase/EmptyCart";
 
 function Product() {
   const dispatch = useDispatch();
@@ -30,9 +31,16 @@ function Product() {
   const shippingCharge = getShippingCharge();
   const total = subtotal + shippingCharge;
 
+  const emptyData = {
+    heading: " Your Cart feels lonely.",
+    description:
+      "Your Shopping cart lives to serve. Give it purpose - fill it with books, electronics, videos, etc. and make it happy.",
+    btnText: "Continue Shopping",
+  };
+
   return (
     <div className="max-w-screen-xl m-auto p-[20px]">
-      <Heading heading="Cart" className="text-start" />
+      <Heading heading="Cart" />
       {cart.length > 0 ? (
         <div className="pb-20">
           <div className="w-full h-20 bg-[#F5F7F7] text-primeColor hidden lg:grid grid-cols-5 place-content-center px-6 text-lg font-semibold">
@@ -58,29 +66,31 @@ function Product() {
                 type="text"
                 placeholder="Coupon Number"
               />
-              <p className="text-sm mdl:text-base font-semibold">
+              <p className="text-sm md:text-base font-semibold dark:text-white">
                 Apply Coupon
               </p>
             </div>
-            <p className="text-lg font-semibold">Update Cart</p>
+            <p className="text-lg font-semibold dark:text-white">Update Cart</p>
           </div>
           <div className="max-w-7xl gap-4 flex justify-end mt-4">
             <div className="w-96 flex flex-col gap-4">
-              <h1 className="text-2xl font-semibold text-right">Cart totals</h1>
+              <h1 className="text-2xl font-semibold text-right dark:text-white">
+                Cart totals
+              </h1>
               <div>
-                <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
+                <p className="dark:text-white flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
                   Subtotal
                   <span className="font-semibold tracking-wide">
                     ${subtotal.toFixed(2)}
                   </span>
                 </p>
-                <p className="flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
+                <p className="dark:text-white flex items-center justify-between border-[1px] border-gray-400 border-b-0 py-1.5 text-lg px-4 font-medium">
                   Shipping Charge
                   <span className="font-semibold tracking-wide">
                     ${shippingCharge.toFixed(2)}
                   </span>
                 </p>
-                <p className="flex items-center justify-between border-[1px] border-gray-400 py-1.5 text-lg px-4 font-medium">
+                <p className="flex items-center dark:text-white justify-between border-[1px] border-gray-400 py-1.5 text-lg px-4 font-medium">
                   Total
                   <span className="font-bold tracking-wide text-lg">
                     ${total.toFixed(2)}
@@ -88,8 +98,8 @@ function Product() {
                 </p>
               </div>
               <div className="flex justify-end">
-                <Link to="/checkout">
-                  <button className="w-52 h-11 font-semibold rounded-lg text-white bg-blue-900 duration-300">
+                <Link to="/">
+                  <button className="w-52 h-11 font-semibold rounded-lg text-white bg-blue-900 dark:bg-white dark:text-gray-900 duration-300">
                     Proceed to Checkout
                   </button>
                 </Link>
@@ -98,29 +108,7 @@ function Product() {
           </div>
         </div>
       ) : (
-        <div className="flex flex-col md:flex-row justify-center items-center gap-4 py-20">
-          <div>
-            <img
-              className="w-80 rounded-lg p-4 mx-auto"
-              src={emptyCart}
-              alt="emptyCart"
-            />
-          </div>
-          <div className="max-w-[500px] p-4 py-8 bg-white flex gap-4 flex-col items-center rounded-md shadow-lg">
-            <h1 className="text-xl font-bold uppercase">
-              Your Cart feels lonely.
-            </h1>
-            <p className="text-sm text-center px-10 -mt-2">
-              Your Shopping cart lives to serve. Give it purpose - fill it with
-              books, electronics, videos, etc. and make it happy.
-            </p>
-            <Link to="/">
-              <button className="bg-primeColor rounded-md cursor-pointer bg-blue-900 hover:bg-white border-[1px] border-blue-900 px-8 py-2 font-semibold text-lg text-[#fff] hover:text-blue-900 duration-300">
-                Continue Shopping
-              </button>
-            </Link>
-          </div>
-        </div>
+        <EmptyCart emptyData={emptyData} />
       )}
     </div>
   );

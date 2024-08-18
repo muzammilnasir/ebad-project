@@ -5,11 +5,11 @@ import Bestsellers from '../components/home/Bestsellers'
 
 function Home() {
   return (
-    <>
+    <div className='dark:bg-gray-900'>
       <Banner />
       <SliderCart />
       <Bestsellers />
-    </>
+    </div>
   )
 }
 

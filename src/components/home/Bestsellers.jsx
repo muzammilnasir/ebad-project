@@ -28,10 +28,10 @@ function Bestsellers() {
       <div className="mt-[10px] max-w-screen-xl w-full mx-auto p-[20px] ">
         <Heading heading="Best Sellers" />
         {isLoading ? (
-          <div class="flex flex-row gap-2 justify-center py-[40px]">
-            <div class="w-4 h-4 rounded-full bg-blue-900 animate-bounce"></div>
-            <div class="w-4 h-4 rounded-full bg-blue-900 animate-bounce [animation-delay:-.3s]"></div>
-            <div class="w-4 h-4 rounded-full bg-blue-900 animate-bounce [animation-delay:-.5s]"></div>
+          <div className="flex flex-row gap-2 justify-center py-[40px]">
+            <div className="w-4 h-4 rounded-full bg-blue-900 animate-bounce"></div>
+            <div className="w-4 h-4 rounded-full bg-blue-900 animate-bounce [animation-delay:-.3s]"></div>
+            <div className="w-4 h-4 rounded-full bg-blue-900 animate-bounce [animation-delay:-.5s]"></div>
           </div>
         ) : isError ? (
           <h1 className="text-[40px] font-bold flex items-center justify-center mt-[20px]">

@@ -40,7 +40,7 @@ function Navbar() {
                 <li key={index}>
                   <NavLink
                     to={link.link}
-                    c className={({isActive}) => `${isActive ? "text-blue-500" : "text-[#fff]"} font-semibold hover:text-blue-400 duration-300`}
+                    className={({isActive}) => `${isActive ? "text-blue-500" : "text-[#fff]"} font-semibold hover:text-blue-400 duration-300`}
                   >
                     {link.name}
                   </NavLink>

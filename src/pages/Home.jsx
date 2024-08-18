@@ -1,16 +1,13 @@
 import React from 'react'
 import Banner from '../components/home/Banner'
-import SliderCart from '<div styleName={} />
-<components />
-<home />
-<S></S>liderCart'
 import Bestsellers from '../components/home/Bestsellers'
+import CardSlider from '../components/home/CardSlider'
 
 function Home() {
   return (
     <div className='dark:bg-gray-900'>
       <Banner />
-      <SliderCart />
+      <CardSlider />
       <Bestsellers />
     </div>
   )

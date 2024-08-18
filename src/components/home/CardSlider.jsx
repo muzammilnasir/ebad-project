@@ -11,7 +11,7 @@ import { useNavigate } from 'react-router-dom';
 import { IoIosHeart } from "react-icons/io";
 import { MdOutlineShoppingCart } from "react-icons/md";
 
-function SliderCart() {
+function CardSlider() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { isLoading, products, isError } = useSelector(
@@ -181,4 +181,4 @@ function SliderCart() {
   );
 }
 
-export default SliderCart;
+export default CardSlider;

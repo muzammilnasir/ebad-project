@@ -60,8 +60,8 @@ function CartDetails() {
                 <div className="flex items-center gap-2 mt-2 sm:mt-0">
                   <div className="flex items-center gap-1">
                     {[...Array(5)].map((_, index) => {
-                      const fullStars = Math.floor(data.rating.rate);
-                      const hasHalfStar = data.rating.rate - fullStars >= 0.5;
+                      const fullStars = Math.floor(data?.rating?.rate);
+                      const hasHalfStar = data?.rating?.rate - fullStars >= 0.5;
 
                       if (index < fullStars) {
                         return (
@@ -80,10 +80,10 @@ function CartDetails() {
                     })}
                   </div>
                   <p className="text-sm font-medium leading-none text-gray-500 dark:text-gray-400">
-                    ( {data.rating.rate} )
+                    ( {data?.rating?.rate} )
                   </p>
                   <p className="text-sm font-medium leading-none text-gray-900 underline hover:no-underline dark:text-white">
-                    {data.rating.count} Reviews
+                    {data?.rating?.count} Reviews
                   </p>
                 </div>
               </div>

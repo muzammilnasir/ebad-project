@@ -2,12 +2,18 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { toast } from "react-toastify";
 
-// Fetch products from API
 export const fetchApi = createAsyncThunk("cart/fetchApi", async () => {
   const response = await axios.get("https://fakestoreapi.com/products");
-  // console.log(response.data);
-  return response.data;
+  
+  // Fetch products from localStorage
+  const localProducts = JSON.parse(localStorage.getItem("products")) || [];
+  
+  // Combine API products with localStorage products
+  const allProducts = [...response.data, ...localProducts];
+  console.log(allProducts);
+  return allProducts;
 });
+
 
 const initialFavorites = localStorage.getItem("favorite")
   ? JSON.parse(localStorage.getItem("favorite"))

@@ -9,15 +9,17 @@ const Cart = lazy(() => import("./pages/Cart"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Details = lazy(() => import("./pages/Details"));
 const Favorite = lazy(() => import("./pages/Favorite"));
+const AddProduct = lazy(() => import("./pages/AddProduct"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path='/' element={<Layout />}>
       <Route path="" element={<Home />} />
       <Route path="favorite" element={<Favorite />} />
+      <Route path="details" element={<Details />} />
       <Route path="cart" element={<Cart />} />
       <Route path="contact" element={<Contact />} />
-      <Route path="details" element={<Details />} />
+      <Route path="addProduct" element={<AddProduct />} />
     </Route>
   )
 );

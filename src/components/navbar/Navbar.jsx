@@ -12,6 +12,7 @@ function Navbar() {
     { name: "Details", link: "details" },
     { name: "Cart", link: "cart" },
     { name: "Contact Us", link: "contact" },
+    { name: "Add Product", link: "addProduct" },
   ];
 
   const handleLinkClick = () => {

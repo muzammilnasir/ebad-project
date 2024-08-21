@@ -1,10 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Heading from "../home/Heading";
 import ItemProduct from "./ItemProduct";
 import { useDispatch, useSelector } from "react-redux";
 import { resetCart } from "../../redux/slice/cartSlice";
-import { emptyCart } from "../../assets";
 import EmptyCart from "../specialcase/EmptyCart";
 
 function Product() {
@@ -98,11 +96,9 @@ function Product() {
                 </p>
               </div>
               <div className="flex justify-end">
-                <Link to="/">
                   <button className="w-52 h-11 font-semibold rounded-lg text-white bg-blue-900 dark:bg-white dark:text-gray-900 duration-300">
                     Proceed to Checkout
                   </button>
-                </Link>
               </div>
             </div>
           </div>

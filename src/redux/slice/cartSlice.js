@@ -4,14 +4,7 @@ import { toast } from "react-toastify";
 
 export const fetchApi = createAsyncThunk("cart/fetchApi", async () => {
   const response = await axios.get("https://fakestoreapi.com/products");
-  
-  // Fetch products from localStorage
-  const localProducts = JSON.parse(localStorage.getItem("products")) || [];
-  
-  // Combine API products with localStorage products
-  const allProducts = [...response.data, ...localProducts];
-  console.log(allProducts);
-  return allProducts;
+  return response.data;
 });
 
 

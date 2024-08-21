@@ -5,11 +5,10 @@ import { ToastContainer } from 'react-toastify';
 import DarkMode from "./components/specialcase/DarkMode";
 
 const Home = lazy(() => import("./pages/Home"));
+const Favorite = lazy(() => import("./pages/Favorite"));
+const Details = lazy(() => import("./pages/Details"));
 const Cart = lazy(() => import("./pages/Cart"));
 const Contact = lazy(() => import("./pages/Contact"));
-const Details = lazy(() => import("./pages/Details"));
-const Favorite = lazy(() => import("./pages/Favorite"));
-const AddProduct = lazy(() => import("./pages/AddProduct"));
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -19,7 +18,6 @@ const router = createBrowserRouter(
       <Route path="details" element={<Details />} />
       <Route path="cart" element={<Cart />} />
       <Route path="contact" element={<Contact />} />
-      <Route path="addProduct" element={<AddProduct />} />
     </Route>
   )
 );

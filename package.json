@@ -12,6 +12,7 @@
   "dependencies": {
     "@material-tailwind/react": "^2.1.9",
     "@reduxjs/toolkit": "^2.2.7",
+    "@stripe/stripe-js": "^4.3.0",
     "axios": "^1.7.3",
     "ionicons": "^7.4.0",
     "nanoid": "^5.0.7",

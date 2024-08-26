@@ -4,6 +4,7 @@ import ItemProduct from "./ItemProduct";
 import { useDispatch, useSelector } from "react-redux";
 import { resetCart } from "../../redux/slice/cartSlice";
 import EmptyCart from "../specialcase/EmptyCart";
+import {loadStripe} from '@stripe/stripe-js';
 
 function Product() {
   const dispatch = useDispatch();
@@ -35,6 +36,33 @@ function Product() {
       "Your Shopping cart lives to serve. Give it purpose - fill it with books, electronics, videos, etc. and make it happy.",
     btnText: "Continue Shopping",
   };
+
+  // payment integration
+  const makePayment = async()=>{
+    const stripe = await loadStripe("pk_test_51PprGxBaJfVbZihhyIWISJ8GkT6L2CZVvnHM3YdVllTBtqM9GqKkOo9Cw315o6s8eenojUhUrNLGKJwRMZPY1DUf00FKEpRp8D");
+
+    const body = {
+        products:cart
+    }
+    const headers = {
+        "Content-Type":"application/json"
+    }
+    const response = await fetch("http://localhost:7000/api/create-checkout-session",{
+        method:"POST",
+        headers:headers,
+        body:JSON.stringify(body)
+    });
+
+    const session = await response.json();
+
+    const result = stripe.redirectToCheckout({
+        sessionId:session.id
+    });
+    
+    if(result.error){
+        console.log(result.error.message);
+    }
+}
 
   return (
     <div className="max-w-screen-xl m-auto p-[20px]">
@@ -96,7 +124,9 @@ function Product() {
                 </p>
               </div>
               <div className="flex justify-end">
-                  <button className="w-52 h-11 font-semibold rounded-lg text-white bg-blue-900 dark:bg-white dark:text-gray-900 duration-300">
+                  <button
+                  onClick={makePayment} 
+                    className="w-52 h-11 font-semibold rounded-lg text-white bg-blue-900 dark:bg-white dark:text-gray-900 duration-300">
                     Proceed to Checkout
                   </button>
               </div>

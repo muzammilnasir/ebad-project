@@ -3,6 +3,8 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Layout from "./components/layout/Layout";
 import { ToastContainer } from 'react-toastify';
 import DarkMode from "./components/specialcase/DarkMode";
+import Success from "./pages/Success";
+import Cancel from "./pages/Cancel";
 
 const Home = lazy(() => import("./pages/Home"));
 const Favorite = lazy(() => import("./pages/Favorite"));
@@ -18,6 +20,8 @@ const router = createBrowserRouter(
       <Route path="details" element={<Details />} />
       <Route path="cart" element={<Cart />} />
       <Route path="contact" element={<Contact />} />
+      <Route path="success" element={<Success />} />
+      <Route path="cancel" element={<Cancel />} />
     </Route>
   )
 );
